@@ -1,0 +1,33 @@
+body {
+	padding-top: 70px;
+}
+
+img {
+	max-width: 100%;
+}
+
+.bukan-link,
+.bukan-link:hover,
+.bukan-link:active,
+.bukan-link:focus,
+.bukan-link:visited {
+	text-decoration: none;
+	color: inherit;
+}
+
+.bawah-dikit {
+	padding-bottom: 5px;
+}
+
+.waktu:first-letter {
+	text-transform: uppercase;
+}
+
+.grid {
+	column-count: 3;
+	column-gap: 1em;
+}
+
+.grid-item {
+	display: inline-block;
+}

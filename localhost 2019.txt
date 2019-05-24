@@ -1,0 +1,11 @@
+Pastikan terinstall PHP versi 7
+
+Cara menjalankan:
+
+Ketikkan di Terminal atau Command Prompt:
+
+php -S localhost:2019
+
+Lalu buka di browser:
+
+localhost:2019
