@@ -1,1 +1,0 @@
-hello<?php /**PATH /mnt/C48455A884559E2C/Latihan Program/codeigniter offline/application/views/layout/default.blade.php ENDPATH**/ ?>
