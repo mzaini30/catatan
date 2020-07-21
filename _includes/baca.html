@@ -3,7 +3,7 @@
 		<h1>Ini judulnya</h1>
 		<p>
 			<div class="btn-group">
-				<router-link to='/93/edit' class='btn btn-warning'>Edit</router-link>
+				<router-link :to='"/" + $route.params.id + "/edit"' class='btn btn-warning'>Edit</router-link>
 				<div class="btn btn-danger">Hapus</div>
 			</div>
 		</p>
