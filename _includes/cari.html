@@ -1,8 +1,8 @@
 <template id="cari">
 	<div>
-		<form>
+		<form @submit.prevent='ubah()'>
 			<div class="form-group">
-				<input type="search" required="" class="form-control" placeholder="Cari apa?" name="">
+				<input type="search" v-model='cari' required="" class="form-control" placeholder="Cari apa?" name="">
 			</div>
 		</form>
 		<div class="list-group">
@@ -12,6 +12,16 @@
 </template>
 <script type="text/javascript">
 	cari = {
-		template: '#cari'
+		template: '#cari',
+		data(){
+			return {
+				cari: ''
+			}
+		},
+		methods: {
+			ubah(){
+				this.$router.push(`/cari/${encodeURIComponent(this.cari)}`);
+			}
+		}
 	}
 </script>
