@@ -2,7 +2,17 @@
 	<div>
 		<h1 class="text-center">Catatan</h1>
 		<hr>
-		
+		<p>
+			<div class="btn-group">
+				<router-link to='/tulis' class='btn btn-warning'>Tulis baru</router-link>
+				<router-link to='/cari' class='btn btn-primary'>Cari</router-link>
+			</div>
+		</p>
+		<p>
+			<div class="list-group">
+				<router-link v-for='x in 20' to='/hello-world' class='list-group-item list-group-item-action'>Hello...</router-link>
+			</div>
+		</p>
 	</div>
 </template>
 <script type="text/javascript">
