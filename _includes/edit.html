@@ -1,0 +1,25 @@
+<template id="edit">
+	<div>
+		<form>
+			<div class="form-group">
+				<input type="text" placeholder="Judul" class="form-control" name="">
+			</div>			
+			<div class="form-group">
+				<textarea placeholder="Isi" class="form-control isi"></textarea>
+			</div>			
+			<div class="form-group">
+				<input type="submit" class="btn btn-success" value="Ubah" name="">
+			</div>
+		</form>
+	</div>
+</template>
+<script type="text/javascript">
+	edit = {
+		template: '#edit',
+		mounted(){
+			tinggi = () => document.querySelector('.isi').style.height = window.innerHeight - 150 + 'px';
+			tinggi();
+			window.addEventListener('resize', tinggi);
+		}
+	}
+</script>

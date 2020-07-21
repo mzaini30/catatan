@@ -26,6 +26,7 @@ layout: compress
 	</div>
 	{% include beranda.html %}
 	{% include baca.html %}
+	{% include edit.html %}
 	<script type="text/javascript" src="vendor/vue.min.js"></script>
 	<script type="text/javascript" src="vendor/vue-router.min.js"></script>
 	<script type="text/javascript">
@@ -49,6 +50,10 @@ layout: compress
 					{
 						path: '/:id',
 						component: baca
+					},
+					{
+						path: '/:id/edit',
+						component: edit
 					}
 				]
 			})
