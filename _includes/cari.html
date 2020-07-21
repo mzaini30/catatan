@@ -6,7 +6,7 @@
 			</div>
 		</form>
 		<div class="list-group">
-			<router-link v-for='x in 10' to='/23' class='list-group-item list-group-item-action'>Hello...</router-link>
+			<router-link v-for='x in data' :to='"/" + x.id' class='list-group-item list-group-item-action' v-text='x.judul'></router-link>
 		</div>
 	</div>
 </template>
@@ -15,12 +15,35 @@
 		template: '#cari',
 		data(){
 			return {
-				cari: ''
+				cari: '',
+				data: []
 			}
 		},
 		methods: {
 			ubah(){
 				this.$router.push(`/cari/${encodeURIComponent(this.cari)}`);
+			},
+			mulai_cari(){
+				if (this.$route.params.cari){
+					this.cari = decodeURIComponent(this.$route.params.cari);
+					body = new FormData;
+					body.append('cari', this.cari);
+					fetch(`${api}/catatan.php/${localStorage.token}/cari`, {
+						method: 'post',
+						body
+					}).then(x => x.json()).then(data => this.data = data);
+				} else {
+					this.cari = '';
+					this.data = [];
+				}
+			}
+		},
+		mounted(){
+			this.mulai_cari();
+		},
+		watch: {
+			$route(){
+				this.mulai_cari();
 			}
 		}
 	}
