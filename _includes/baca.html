@@ -1,23 +1,36 @@
 <template id="baca">
 	<div>
-		<h1>Ini judulnya</h1>
+		<h1 v-text='judul'></h1>
 		<p>
 			<div class="btn-group">
 				<router-link :to='"/" + $route.params.id + "/edit"' class='btn btn-warning'>Edit</router-link>
 				<div class="btn btn-danger" @click='hapus()'>Hapus</div>
 			</div>
 		</p>
-		<div>
-			<p>Ini adalah isi...</p>
-		</div>
+		<div v-html='catatan'></div>
 	</div>
 </template>
 <script type="text/javascript">
 	baca = {
 		template: '#baca',
+		data(){
+			return {
+				catatan: '',
+				judul: ''
+			}
+		},
+		mounted(){
+			fetch(`${api}/catatan.php/${localStorage.token}/baca/${this.$route.params.id}`).then(x => x.json()).then(data => {
+				this.judul = data.judul;
+				this.catatan = data.catatan;
+			});
+		},
 		methods: {
 			hapus(){
 				tanya = confirm('Hapus kah?');
+				if (tanya){
+					fetch(`${api}/catatan.php/${localStorage.token}/hapus/${this.$route.params.id}`).then(() => this.$router.push('/'));
+				}
 			}
 		}
 	}

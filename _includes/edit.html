@@ -2,10 +2,10 @@
 	<div>
 		<form>
 			<div class="form-group">
-				<input type="text" placeholder="Judul" class="form-control" name="">
+				<input type="text" placeholder="Judul" v-model='judul' required="" class="form-control" name="">
 			</div>			
 			<div class="form-group">
-				<textarea placeholder="Isi" class="form-control isi"></textarea>
+				<textarea placeholder="Isi" class="form-control isi" v-model='catatan'></textarea>
 			</div>			
 			<div class="form-group">
 				<input type="submit" class="btn btn-primary" value="Ubah" name="">
@@ -16,10 +16,20 @@
 <script type="text/javascript">
 	edit = {
 		template: '#edit',
+		data(){
+			return {
+				judul: '',
+				catatan: ''
+			}
+		},
 		mounted(){
 			tinggi = () => document.querySelector('.isi').style.height = window.innerHeight - 150 + 'px';
 			tinggi();
 			window.addEventListener('resize', tinggi);
+			fetch(`${api}/catatan.php/${localStorage.token}/baca/${this.$route.params.id}`).then(x => x.json()).then(data => {
+				this.judul = data.judul;
+				this.catatan = data.markdown;
+			})
 		}
 	}
 </script>

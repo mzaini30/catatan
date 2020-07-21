@@ -10,7 +10,7 @@
 		</p>
 		<p>
 			<div class="list-group">
-				<router-link v-for='x in 20' to='/76' class='list-group-item list-group-item-action'>Hello...</router-link>
+				<router-link v-for='x in data' :to='"/" + x.id' class='list-group-item list-group-item-action' v-text='x.judul'></router-link>
 			</div>
 		</p>
 	</div>
@@ -18,10 +18,16 @@
 <script type="text/javascript">
 	beranda = {
 		template: '#beranda',
+		data(){
+			return {
+				data: []
+			}
+		},
 		mounted(){
 			if (!localStorage.token){
 				this.$router.push('/login');
 			}
+			fetch(`${api}/catatan.php/${localStorage.token}/semua`).then(x => x.json()).then(data => this.data = data);
 		}
 	}
 </script>

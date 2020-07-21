@@ -1,14 +1,35 @@
 <template id="login">
 	<div>
-		<form>
+		<form @submit.prevent='cek_password()'>
 			<div class="form-group">
-				<input type="password" class="form-control" placeholder="Masukkan password" required="" name="">
+				<input type="password" class="form-control" placeholder="Masukkan password" required="" v-model='password' name="">
 			</div>
 		</form>
 	</div>
 </template>
 <script type="text/javascript">
 	login = {
-		template: '#login'
+		template: '#login',
+		data(){
+			return {
+				password: ''
+			}
+		},
+		methods: {
+			cek_password(){
+				body = new FormData;
+				body.append('password', this.password);
+				fetch(`${api}/login.php/cek`, {
+					method: 'post',
+					body
+				}).then(x => x.json()).then(data => {
+					if (data != 'salah'){
+						localStorage.setItem('token', data);
+						this.$router.push('/');
+					}
+					this.password = '';
+				});
+			}
+		}
 	}
 </script>

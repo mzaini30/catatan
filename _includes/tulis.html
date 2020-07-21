@@ -1,11 +1,11 @@
 <template id="tulis">
 	<div>
-		<form>
+		<form @submit.prevent='baru()'>
 			<div class="form-group">
-				<input type="text" placeholder="Judul" class="form-control" name="">
+				<input type="text" v-model='judul' placeholder="Judul" required="" class="form-control" name="">
 			</div>			
 			<div class="form-group">
-				<textarea placeholder="Isi" class="form-control isi"></textarea>
+				<textarea placeholder="Isi" v-model='catatan' class="form-control isi"></textarea>
 			</div>			
 			<div class="form-group">
 				<input type="submit" class="btn btn-primary" value="Ubah" name="">
@@ -16,6 +16,23 @@
 <script type="text/javascript">
 	tulis = {
 		template: '#tulis',
+		data(){
+			return {
+				judul: '',
+				catatan: ''
+			}
+		},
+		methods: {
+			baru(){
+				body = new FormData;
+				body.append('judul', this.judul);
+				body.append('catatan', this.catatan);
+				fetch(`${api}/catatan.php/${localStorage.token}/baru`, {
+					method: 'post',
+					body
+				}).then(x => x.json()).then(data => this.$router.push(`/${data}`));
+			}
+		},
 		mounted(){
 			tinggi = () => document.querySelector('.isi').style.height = window.innerHeight - 150 + 'px';
 			tinggi();
