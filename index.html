@@ -29,6 +29,7 @@ layout: compress
 	{% include edit.html %}
 	{% include tulis.html %}
 	{% include cari.html %}
+	{% include login.html %}
 	<script type="text/javascript" src="vendor/vue.min.js"></script>
 	<script type="text/javascript" src="vendor/vue-router.min.js"></script>
 	<script type="text/javascript">
@@ -57,6 +58,10 @@ layout: compress
 					{
 						path: '/tulis',
 						component: tulis
+					},
+					{
+						path: '/login',
+						component: login
 					},
 					{
 						path: '/cari',
