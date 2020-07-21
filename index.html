@@ -41,6 +41,11 @@ layout: compress
 					});
 				}
 			},
+			watch: {
+				$route(){
+					this.ke_atas();
+				}
+			},
 			router: new VueRouter({
 				routes: [
 					{
