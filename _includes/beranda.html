@@ -6,6 +6,7 @@
 			<div class="btn-group">
 				<router-link to='/tulis' class='btn btn-warning'>Tulis baru</router-link>
 				<router-link to='/cari' class='btn btn-primary'>Cari</router-link>
+				<div class="btn btn-danger" @click="keluar()">Logout</div>
 			</div>
 		</p>
 		<p>
@@ -22,6 +23,12 @@
 			return {
 				data: []
 			}
+		},
+		methods: {
+		 keluar(){
+		  localStorage.removeItem("token");
+		  this.$router.push("/login");
+		 }
 		},
 		mounted(){
 			if (!localStorage.token){
