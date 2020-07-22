@@ -9,19 +9,23 @@ layout: compress
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="vendor/bootstrap.min.css">
 	<style type="text/css">
+	 * {
+	  word-wrap: break-word;
+	 }
 		.atas {
 			position: fixed;
 			bottom: 20px;
-			right: 20px;
+			right: -100px;
+			transition: 1s;
 		}
 		blockquote {
 			margin-bottom:1rem;font-size:1.25rem
 		}
-img {
- max-width: 100%;
- display: block;
- margin: auto;
-}
+  img {
+   max-width: 100%;
+   display: block;
+   margin: auto;
+  }
 	</style>
 </head>
 <body>
@@ -41,6 +45,16 @@ img {
 	<script type="text/javascript" src="vendor/vue.min.js"></script>
 	<script type="text/javascript" src="vendor/vue-router.min.js"></script>
 	<script type="text/javascript">
+	 y_sebelumnya = window.pageYOffset;
+	 window.addEventListener("scroll", () => {
+	  y_sekarang = window.pageYOffset;
+	  if (y_sekarang > y_sebelumnya){
+	   document.querySelector(".atas").style.right = "-100px";
+	  } else {
+	   document.querySelector(".atas").style.right = "20px";
+	  }
+	  y_sebelumnya = y_sekarang;
+	 });
 		api = 'https://mzaini30.nasihosting.com/catatan';
 		new Vue({
 			el: '.vue',
