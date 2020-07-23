@@ -23,6 +23,11 @@
 			fetch(`${api}/catatan.php/${localStorage.token}/baca/${this.$route.params.id}`).then(x => x.json()).then(data => {
 				this.judul = data.judul;
 				this.catatan = data.catatan;
+				this.$nextTick(() => {
+					document.querySelectorAll('pre code').forEach((block) => {
+						hljs.highlightBlock(block);
+					});
+				});
 			});
 		},
 		methods: {
