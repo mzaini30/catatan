@@ -3,7 +3,7 @@
 		<h1 class="text-center">Catatan</h1>
 		<hr>
 		<p>
-			<div class="btn-group">
+			<div class="btn-group stick">
 				<router-link to='/tulis' class='btn btn-warning'>Tulis baru</router-link>
 				<router-link to='/cari' class='btn btn-primary'>Cari</router-link>
 				<div class="btn btn-danger" @click="keluar()">Logout</div>
@@ -38,3 +38,10 @@
 		}
 	}
 </script>
+<style type="text/css">
+	.stick {
+		position: sticky;
+		top: 0;
+		z-index: 99;
+	}
+</style>
